@@ -13,10 +13,18 @@ jobs:
       - image: circleci/node:13.8.0    
     steps:      
       - run: echo World
+  print-name:
+    environment:
+      NAME: ali
+    steps:
+      - run: echo $NAME
 workflows:
   say-hello-workflow:
     jobs:
       - print-hello          
       - print-world:
           requires:
-            - print-hello  
+            - print-hello
+      - print-name:
+          requires:
+            - print-world  
