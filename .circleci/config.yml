@@ -14,6 +14,8 @@ jobs:
     steps:      
       - run: echo World
   print-name:
+    docker:
+      - image: circleci/node:13.8.0
     environment:
       NAME: ali
     steps:
