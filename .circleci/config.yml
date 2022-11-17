@@ -36,6 +36,17 @@ jobs:
       - print_pipeline_id:
           # pipelineId: $CIRCLE_WORKFLOW_ID
           pipelineId: << pipeline.id >>
+  test-failure-handling:
+    docker:
+      - image: circleci/node:13.8.0    
+    steps:      
+      - run: erorrrrr -non-zero- exit
+      - run:
+          command: echo "there is failure"
+          when: on_fail
+
+    
+    
 workflows:
   say-hello-workflow:
     jobs:
@@ -46,4 +57,5 @@ workflows:
       - print-name:
           requires:
             - print-world
-      - print-pipeline-id  
+      - print-pipeline-id
+      - test-failure-handling  
