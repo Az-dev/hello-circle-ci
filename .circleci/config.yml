@@ -2,6 +2,12 @@
 # See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
 
+commands:
+  print_pipeline_id:
+    description: prints pipeline id
+    steps:
+      - run echo $CIRCLE_WORKFLOW_ID
+
 jobs:
   print-hello:    
     docker:
@@ -20,6 +26,11 @@ jobs:
       NAME: ali
     steps:
       - run: echo $NAME
+  print-pipeline-id:
+    docker:
+      - image: circleci/node:13.8.0
+    steps:
+      - print_pipeline_id
 workflows:
   say-hello-workflow:
     jobs:
