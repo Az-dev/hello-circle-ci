@@ -40,4 +40,5 @@ workflows:
             - print-hello
       - print-name:
           requires:
-            - print-world  
+            - print-world
+      - print-pipeline-id  
