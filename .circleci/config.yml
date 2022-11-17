@@ -35,7 +35,7 @@ jobs:
     steps:
       - print_pipeline_id:
           # pipelineId: $CIRCLE_WORKFLOW_ID
-          pipelineId: pipeline.id
+          pipelineId: $pipeline.id
 workflows:
   say-hello-workflow:
     jobs:
