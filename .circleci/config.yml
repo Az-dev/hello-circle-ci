@@ -5,13 +5,12 @@ version: 2.1
 commands:
   print_pipeline_id:
     description: prints pipeline id
-    # parameters:
-    #   to:
-    #     type: string
-    #     default: "place your pipeline id"
-    steps:
-      # - run: echo << parameters.to >>
-      - run: echo $CIRCLE_WORKFLOW_ID
+    parameters:
+      to:
+        type: string
+        default: "place your name here"
+    steps:      
+      - run: echo $CIRCLE_WORKFLOW_ID ya << parameters.to >>
 
 jobs:
   print-hello:    
@@ -35,8 +34,8 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
-      - print_pipeline_id
-          # to: $CIRCLE_WORKFLOW_ID
+      - print_pipeline_id:
+          to: "lol :D"
 workflows:
   say-hello-workflow:
     jobs:
